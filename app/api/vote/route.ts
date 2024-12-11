@@ -1,4 +1,3 @@
-import { NextResponse } from 'next/server'
 import Pusher from 'pusher'
 
 const pusher = new Pusher({

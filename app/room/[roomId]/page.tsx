@@ -39,7 +39,7 @@ export default function Room({ params }: { params: Promise<{ roomId: string }> }
   const [isHostSettingsOpen, setIsHostSettingsOpen] = useState(false)
   const [isUsernameModalOpen, setIsUsernameModalOpen] = useState(false)
   const [sizingOption, setSizingOption] = useState<'fibonacci' | 'tshirt'>('fibonacci')
-  const [error, setError] = useState<string | null>(null)
+  const [, setError] = useState<string | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
@@ -172,7 +172,7 @@ export default function Room({ params }: { params: Promise<{ roomId: string }> }
       setRevealed(false)
     })
 
-    channel.bind('pusher:error', (err: any) => {
+    channel.bind('pusher:error', (err: { message: any; }) => {
       setError(`Connection error: ${err.message}`)
     })
 
